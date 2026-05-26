@@ -1,41 +1,65 @@
-<h1>Player Amounts</h1>
-<table>
-    <tr>
+<div class="page">
+  <h1 class="title">Player Amounts</h1>
+  <div class="card table-card">
+    <table>
+      <tr>
         <th>Player Name</th>
         <th>Amount</th>
-    </tr>
+      </tr>
 
-    <tr *ngFor="let player of gameData.players">
+      <tr *ngFor="let player of gameData.players">
         <td>{{ player.name }}</td>
-        <td *ngIf="player.bankrupt == false">{{ player.amount }}</td>
-        <td *ngIf="player.bankrupt == true">Bankrupt</td>
-    </tr>
-</table>
+        <td>
+          <span *ngIf="!player.bankrupt">{{ player.amount }}</span>
+          <span class="bankrupt" *ngIf="player.bankrupt">Bankrupt</span>
+        </td>
+      </tr>
+    </table>
+  </div>
 
-<h1>Transaction</h1>
+  <h1 class="section-title">Transaction</h1>
 
-<select [(ngModel)]="sender">
-    <option value="">Select Sender</option>
-    <option value="bank">Bank</option>
-    <option *ngFor="let player of gameData.players" [value]="player.name" [hidden]="player.bankrupt">{{ player.name }}</option>
-    <option value="everyone">All Players</option>
-</select>
+  <div class="card form-card">
+    <select [(ngModel)]="sender">
+      <option value="">Select Sender</option>
+      <option value="bank">Bank</option>
+      <option
+        *ngFor="let player of gameData.players"
+        [value]="player.name"
+        [hidden]="player.bankrupt"
+      >
+        {{ player.name }}
+      </option>
+      <option value="everyone">All Players</option>
+    </select>
 
-<p>to</p>
+    <p class="to-text">to</p>
 
-<select [(ngModel)]="receiver">
-    <option value="">Select Receiver</option>
-    <option value="bank">Bank</option>
-    <option *ngFor="let player of gameData.players" [value]="player.name" [hidden]="player.bankrupt">{{ player.name }}</option>
-    <option value="everyone">All Players</option>
-</select>
+    <select [(ngModel)]="receiver">
+      <option value="">Select Receiver</option>
+      <option value="bank">Bank</option>
+      <option
+        *ngFor="let player of gameData.players"
+        [value]="player.name"
+        [hidden]="player.bankrupt"
+      >
+        {{ player.name }}
+      </option>
+      <option value="everyone">All Players</option>
+    </select>
 
-<label>Enter the amount</label>
-<input type="number" [(ngModel)]="amount" />
+    <label class="label">Enter the amount</label>
+    <div class="amount-box">
+      <input type="number" [(ngModel)]="amount" />
+    </div>
 
-<button (click)="transaction()" [disabled]="!validTransaction">Make transaction</button>
+    <button (click)="transaction()" [disabled]="!validTransaction">Make transaction</button>
+  </div>
 
-<h1>Transaction Log</h1>
-<ul>
-    <li *ngFor="let transaction of gameData.transactions">{{ transaction }}</li>
-</ul>
+  <h1 class="section-title">Transaction Log</h1>
+  <div class="card log-card">
+    <ul>
+      <li *ngFor="let transaction of gameData.transactions">{{ transaction }}</li>
+    </ul>
+  </div>
+</div>

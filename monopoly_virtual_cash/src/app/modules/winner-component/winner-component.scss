@@ -1,0 +1,64 @@
+:host {
+  display: block;
+  min-height: 100vh;
+
+  background: radial-gradient(circle at top, #14532d, #0f172a);
+
+  color: white;
+  padding: 20px;
+
+  overflow: hidden;
+}
+
+/* CONFETTI LAYER (KEEP THIS) */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+/* WINNER CARD */
+.winner-card {
+  text-align: center;
+
+  margin-top: 40px;
+  padding: 30px;
+
+  border-radius: 16px;
+
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+
+  backdrop-filter: blur(12px);
+}
+
+/* WINNER TEXT */
+.winner-name {
+  font-size: 40px;
+  color: var(--money-gold);
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.5);
+}
+
+.amount {
+  color: var(--money-green);
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  margin-top: 20px;
+
+  border-radius: 12px;
+  overflow: hidden;
+
+  background: var(--card-bg);
+}
+
+th {
+  color: var(--money-gold);
+}
